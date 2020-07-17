@@ -21,6 +21,14 @@ brew install oclint-growing
 
 - 运行 CodeChecker ，显示代码错误
 
+
+# CodeChecker配置
+
+GIO_METHOD_ALLOW_UPPERCASE 允许的method前缀大写 例如URL，传入"URL,GIO",将以','拆分
+GIO_CATEGORY_PREFIX 必须的分类前缀，默认Growing
+GIO_CLASS_PREFIX 必须的类前缀，默认Growing
+GIO_STATIC_NSSTRING_PREFIX static NSString的变量前缀，默认为kGrowing
+
 # 声明
 
 仅用于内部使用
