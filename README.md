@@ -30,6 +30,12 @@ brew install oclint-growing
 `GIO_CLASS_PREFIX` 必须的类前缀，默认Growing
 `GIO_STATIC_NSSTRING_PREFIX` static NSString的变量前缀，默认为kGrowing
 
+
+
+# CodeFomatter
+
+使用`Clang-formater`进行代码格式化，配置为`.clang-format`，为默认`Google C++`标准
+
 # 声明
 
 仅用于内部使用
