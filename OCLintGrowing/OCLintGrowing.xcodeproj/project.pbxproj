@@ -18,6 +18,17 @@
 			name = CodeChecker;
 			productName = CodeChecker;
 		};
+		04D0F33824C5B1DE00CC3A16 /* CodeFormatter */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 04D0F33C24C5B1DE00CC3A16 /* Build configuration list for PBXAggregateTarget "CodeFormatter" */;
+			buildPhases = (
+				04D0F33D24C5B1E100CC3A16 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CodeFormatter;
+			productName = CodeFormatter;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -30,16 +41,6 @@
 		04C0A36024C19FDC00607C10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A35F24C19FDC00607C10 /* main.m */; };
 		04C0A50324C1B06A00607C10 /* test.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C0A50224C1B06A00607C10 /* test.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		04C0A51D24C1B10000607C10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04C0A51924C1B10000607C10 /* MyFramework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 04C0A50E24C1B0E300607C10;
-			remoteInfo = MyFramework;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		04C0A34A24C19FDA00607C10 /* OCLintGrowing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCLintGrowing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +56,6 @@
 		04C0A35E24C19FDC00607C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04C0A35F24C19FDC00607C10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04C0A50224C1B06A00607C10 /* test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = test.m; sourceTree = "<group>"; };
-		04C0A51924C1B10000607C10 /* MyFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MyFramework.xcodeproj; path = ../MyFramework/MyFramework.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,6 @@
 		04C0A34124C19FDA00607C10 = {
 			isa = PBXGroup;
 			children = (
-				04C0A51924C1B10000607C10 /* MyFramework.xcodeproj */,
 				04C0A34C24C19FDA00607C10 /* OCLintGrowing */,
 				04C0A34B24C19FDA00607C10 /* Products */,
 			);
@@ -103,14 +102,6 @@
 				04C0A35F24C19FDC00607C10 /* main.m */,
 			);
 			path = OCLintGrowing;
-			sourceTree = "<group>";
-		};
-		04C0A51A24C1B10000607C10 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				04C0A51E24C1B10000607C10 /* MyFramework.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +139,9 @@
 					04C0A36624C19FF300607C10 = {
 						CreatedOnToolsVersion = 11.5;
 					};
+					04D0F33824C5B1DE00CC3A16 = {
+						CreatedOnToolsVersion = 11.5;
+					};
 				};
 			};
 			buildConfigurationList = 04C0A34524C19FDA00607C10 /* Build configuration list for PBXProject "OCLintGrowing" */;
@@ -161,29 +155,14 @@
 			mainGroup = 04C0A34124C19FDA00607C10;
 			productRefGroup = 04C0A34B24C19FDA00607C10 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 04C0A51A24C1B10000607C10 /* Products */;
-					ProjectRef = 04C0A51924C1B10000607C10 /* MyFramework.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				04C0A34924C19FDA00607C10 /* OCLintGrowing */,
 				04C0A36624C19FF300607C10 /* CodeChecker */,
+				04D0F33824C5B1DE00CC3A16 /* CodeFormatter */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		04C0A51E24C1B10000607C10 /* MyFramework.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MyFramework.framework;
-			remoteRef = 04C0A51D24C1B10000607C10 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		04C0A34824C19FDA00607C10 /* Resources */ = {
@@ -214,8 +193,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# 使用前可以先安装 oclint tool\n# //1. 先拉下专案\n# brew tap growingio/homebrew-oclint\n# //2. 然后安装库\n# brew install oclint-growing\n# //3. gem install xcpretty\n\nexport LC_ALL=en_US.UTF-8\nexport LANG=en_US.UTF-8\n\nunset LLVM_TARGET_TRIPLE_SUFFIX\n\ncd ${SRCROOT}\n\nCOMPILE_JSON=${SRCROOT}/compile_commands.json\n\necho \"==== json file : $COMPILE_JSON ====\"\n\nif [[ ! -f $COMPILE_JSON ]]; then\n    #statements\n    echo \"remove $COMPILE_JSON\"\n    rm -r $COMPILE_JSON\n    \nfi\n\n#echo \"[]\" > $COMPILE_JSON\necho \"==== Root Path : ${SRCROOT} ====\"\n\nxcodebuild clean\nxcodebuild COMPILER_INDEX_STORE_ENABLE=NO | xcpretty -r json-compilation-database --output compile_commands.json\necho \"==== start xcpretty ====\"\n\necho \"==== oclint-json-compilation-database start ====\"\n\n\noclint-json-compilation-database -e Pods -v -- -report-type xcode -rc LONG_LINE=1000 -rc SHORT_VARIABLE_NAME=1 -rc CYCLOMATIC_COMPLEXITY=30 -rc CYCLOMATIC_COMPLEXITY=1500 -rc NCSS_METHOD=500 -rc LONG_METHOD=100 -rc LONG_VARIABLE_NAME=100 -rc GIO_METHOD_ALLOW_UPPERCASE=\"URL,FMG3DB,TXT,UTF,STM\" -max-priority-1=99999 -max-priority-2=99999 -max-priority-3=99999 -rc GIO_CATEGORY_PREFIX=Growing -rc GIO_CLASS_PREFIX=Growing\n";
+			shellScript = "# 使用前可以先手动安装工具,提升速度\n# 由于GrowingIOTest链接工程较多,费事较长\n# //1. 先拉下专案\n# brew tap growingio/homebrew-oclint\n# //2. 然后安装库\n# brew install oclint-growing\n# //3. gem install xcpretty\n\n# 关于检测结果，最终可以过滤 GrowingIOCodeChecker 来查看检测的错误\n\nexport LC_ALL=en_US.UTF-8\nexport LANG=en_US.UTF-8\n\n# 0. 检测brew工具\nif which brew 2>/dev/null; then\necho 'brew already installed'\nelse # install oclint\necho 'brew not install,exit!'\nexit 0;\nfi\n\n# 如果没有安装最好翻墙，不然会很慢\n# 1. 环境配置，判断是否安装oclint-growing，没有则安装\nif which oclint 2>/dev/null; then\necho 'oclint-growing already installed'\nelse # install oclint\nbrew tap growingio/homebrew-oclint\nbrew install oclint-growing\nfi\n\n# 2. 环境配置，判断是否安装xcpretty，没有则安装\nif which xcpretty 2>/dev/null; then\necho 'xcpretty already installed'\nelse\necho 'xcpretty need permissions,please enter sudo gem install xcpretty in your terminal,exit!'\nexit 0;\nfi\n\n\nunset LLVM_TARGET_TRIPLE_SUFFIX\n\ncd ${SRCROOT}\n\nCOMPILE_JSON=${SRCROOT}/compile_commands.json\n\necho \"==== json file : $COMPILE_JSON ====\"\n\nif [[ -f $COMPILE_JSON ]]; then\n    #statements\n    echo \"remove $COMPILE_JSON\"\n    rm -r $COMPILE_JSON\n    \nfi\n\n#echo \"[]\" > $COMPILE_JSON\necho \"==== Root Path : ${SRCROOT} ====\"\n# 生成编译配置文件，oclint使用clang分析的话，需要知道编译环境，这里就是生成编译环境的一个环节\n# 1.workspace的编译\n#xcodebuild clean -workspace Growing.xcworkspace -scheme GrowingIOTest -configuration Release -arch armv7 -sdk iphoneos13.5\n#xcodebuild -workspace Growing.xcworkspace -scheme GrowingIOTest -configuration Release -arch armv7 -sdk iphoneos13.5 COMPILER_INDEX_STORE_ENABLE=NO | xcpretty -r json-compilation-database --output compile_commands.json\n\n# 2.默认target编译\nxcodebuild clean\nxcodebuild COMPILER_INDEX_STORE_ENABLE=NO | xcpretty -r json-compilation-database --output compile_commands.json\necho \"==== start xcpretty ====\"\n\necho \"==== oclint-json-compilation-database start ====\"\n\n\noclint-json-compilation-database -e Pods -v -- -report-type xcode -rc LONG_LINE=1000 -rc SHORT_VARIABLE_NAME=1 -rc CYCLOMATIC_COMPLEXITY=30 -rc CYCLOMATIC_COMPLEXITY=1500 -rc NCSS_METHOD=500 -rc LONG_METHOD=100 -rc LONG_VARIABLE_NAME=100 -rc GIO_METHOD_ALLOW_UPPERCASE=\"URL,FMG3DB,TXT,UTF,STM\" -max-priority-1=99999 -max-priority-2=99999 -max-priority-3=99999 -rc GIO_CATEGORY_PREFIX=Growing -rc GIO_CLASS_PREFIX=Growing\n";
 			showEnvVarsInLog = 0;
+		};
+		04D0F33D24C5B1E100CC3A16 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# 2. 环境配置，判断是否安装clang-format，没有则安装\n\n# 使用clang-format格式化,格式化规范采用Google C++规范\n# 参考链接：http://clang.llvm.org/docs/ClangFormatStyleOptions.html\n\nif which xcpretty 2>/dev/null; then\necho \"clang-format already installed\"\nelse\nbrew install clang-format\nfi\n# 格式化你修改过的代码\n# 请执行后再确认你的代码\nsh ${SRCROOT}/code-format.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -414,6 +410,22 @@
 			};
 			name = Release;
 		};
+		04D0F33924C5B1DE00CC3A16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		04D0F33A24C5B1DE00CC3A16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -440,6 +452,15 @@
 			buildConfigurations = (
 				04C0A36824C19FF300607C10 /* Debug */,
 				04C0A36924C19FF300607C10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04D0F33C24C5B1DE00CC3A16 /* Build configuration list for PBXAggregateTarget "CodeFormatter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04D0F33924C5B1DE00CC3A16 /* Debug */,
+				04D0F33A24C5B1DE00CC3A16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
