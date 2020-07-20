@@ -211,7 +211,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# 2. 环境配置，判断是否安装clang-format，没有则安装\n\n# 使用clang-format格式化,格式化规范采用Google C++规范\n# 参考链接：http://clang.llvm.org/docs/ClangFormatStyleOptions.html\n\nif which xcpretty 2>/dev/null; then\necho \"clang-format already installed\"\nelse\nbrew install clang-format\nfi\n# 格式化你修改过的代码\n# 请执行后再确认你的代码\nsh ${SRCROOT}/code-format.sh\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# 2. 环境配置，判断是否安装clang-format，没有则安装\n\n# 使用clang-format格式化,格式化规范采用Google C++规范\n# 参考链接：http://clang.llvm.org/docs/ClangFormatStyleOptions.html\n\nif which clang-format 2>/dev/null; then\necho \"clang-format already installed\"\nelse\nbrew install clang-format\nfi\n# 格式化你修改过的代码\n# 请执行后再确认你的代码\nsh ${SRCROOT}/code-format.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
