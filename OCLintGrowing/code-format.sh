@@ -16,13 +16,14 @@ fi
 
 cd "$cur_dir"
 # 获得变动文件
-git status | grep -Eo '([A-Za-z0-9_-]+/){1,}[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+' > $cur_dir/git_changed.txt
+git status | grep -Eo '([A-Za-z0-9_-]+/){1,}[A-Za-z0-9_-]+\+{0,}[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+' > $cur_dir/git_changed.txt
 # 路径去重
 sort -k2n $cur_dir/git_changed.txt | uniq > $cur_dir/git_changed_output.txt
 
 
 find_code_file() {
 	m_name=$1
+#    echo "clang-format Test :$m_name"
 	if [[ "${m_name##*.}"x = "m"x || "${m_name##*.}"x = "mm"x|| "${m_name##*.}"x = "cpp"x||"${m_name##*.}"x = "c"x|| "${m_name##*.}"x = "h"x|| "${m_name##*.}"x = "hpp"x ]];then
     	
     	if [[ -f $m_name ]]; then
