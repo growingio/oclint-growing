@@ -1,3 +1,11 @@
-OCLintGrowing/build/
+# Xcode
 .DS_Store
-OCLintGrowing/compile_commands.json
+build/
+*.xccheckout
+*.xcuserstate
+
+xcuserdata
+profile
+DerivedData
+compile_commands.json
+xcuserdata
